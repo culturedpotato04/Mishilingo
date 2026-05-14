@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mishilingo | CG Queen's Kannada Kingdom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=9" />
+</head>
+<body class="bg-default">
+  <div id="ambient-stars" aria-hidden="true"></div>
+  <div id="toast-container" aria-live="polite"></div>
+  <div id="answer-feedback" class="answer-feedback" aria-live="assertive"></div>
+
+  <aside id="cg-queen-wrap" class="queen-dock" aria-label="CG Queen, moon guardian">
+    <div id="cg-speech-bubble" class="queen-bubble">Ready when you are, Mishi.</div>
+    <div class="queen-stage">
+      <span id="cg-queen-hat" class="queen-hat" aria-hidden="true"></span>
+      <div id="cg-queen-svg" class="cg-queen-svg sticker-queen mood-happy" role="img" aria-label="Animated moon mascot CG Queen">
+        <div id="moon-glow" class="sticker-glow" aria-hidden="true"></div>
+        <div id="moon-body" class="sticker-moon">
+          <div class="sticker-crown" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div id="moon-eye-left" class="sticker-eye eye-left"></div>
+          <div id="moon-eye-right" class="sticker-eye eye-right"></div>
+          <div class="sticker-cheek cheek-left"></div>
+          <div class="sticker-cheek cheek-right"></div>
+          <div id="moon-mouth" class="sticker-smile"></div>
+          <div class="sticker-scarf"></div>
+        </div>
+        <div class="sticker-star star-left" aria-hidden="true">✦</div>
+        <div class="sticker-star star-right" aria-hidden="true">★</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="app-shell">
+    <section id="screen-splash" class="screen screen-active hero-screen" aria-hidden="false">
+      <div class="splash-grid">
+        <div id="splash-queen" class="splash-mascot-mini" aria-hidden="true"></div>
+        <div>
+          <p class="eyebrow">365 days. Two lessons a day. One moon guardian.</p>
+          <h1 id="splash-title">Mishilingo</h1>
+          <p id="splash-subtitle">CG Queen's Kannada Kingdom for Mishi</p>
+        <p class="intro-note">Even Cherry Mumma can also join if she wants to learn Kannada... hehe.</p>
+          <button id="btn-start-app" class="btn-primary btn-xl" type="button">Start Adventure</button>
+        </div>
+      </div>
+    </section>
+
+    <header class="app-header">
+      <button id="btn-settings" class="icon-btn" type="button" aria-label="Settings">⚙</button>
+      <div class="brand-mark">
+        <span>Mishilingo</span>
+        <small>Kannada Kingdom</small>
+      </div>
+      <div class="header-stats" aria-label="Progress stats">
+        <span id="header-streak">0</span>
+        <span id="header-xp">0 XP</span>
+        <span id="header-gems">0 gems</span>
+        <span id="header-lives">5</span>
+      </div>
+    </header>
+
+    <section id="screen-mumma-intro" class="screen centered-screen" aria-hidden="true">
+      <div class="panel intro-panel">
+        <p class="eyebrow">A tiny message before we begin</p>
+        <h2>Welcome, Mishi.</h2>
+        <p>The moon gate is open. CG Queen will guard your Kannada journey, and yes, Cherry Mumma is allowed inside too.</p>
+        <button id="btn-skip-mumma" class="btn-primary" type="button">Enter Kingdom</button>
+      </div>
+    </section>
+
+    <section id="screen-home" class="screen content-screen" aria-hidden="true">
+      <div class="home-hero">
+        <div>
+          <p class="eyebrow">Today's quest</p>
+          <h2 id="home-day-number">Day 1</h2>
+          <p><span id="home-world-icon"></span> <span id="home-world-name">Letter World</span></p>
+        </div>
+        <div class="lessons-left" id="home-lessons-left">2 lessons left today</div>
+      </div>
+
+      <div class="action-row">
+        <button id="btn-start-lesson" class="btn-primary btn-xl" type="button">Start Lesson 1</button>
+        <button id="btn-review-quest" class="btn-secondary" type="button">Review Quest</button>
+      </div>
+
+      <div class="stat-grid">
+        <article><strong id="home-streak-val">0 day streak</strong><span>Streak</span></article>
+        <article><strong id="home-xp-val">0 XP</strong><span>Total XP</span></article>
+        <article><strong id="home-gems-val">0 gems</strong><span>Moon gems</span></article>
+      </div>
+
+      <section class="panel xp-panel">
+        <div class="section-head">
+          <h3>XP to Next Star</h3>
+          <strong id="xp-bar-text">0 XP</strong>
+        </div>
+        <div class="xp-meter"><span id="xp-bar-fill"></span></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h3>Word of the Day</h3>
+          <button id="btn-open-save" class="btn-text" type="button">Save / Load</button>
+        </div>
+        <div id="word-of-day" class="word-card"></div>
+      </section>
+
+      <section class="panel">
+        <h3>Progress Snapshot</h3>
+        <div id="progress-snapshot" class="snapshot-grid"></div>
+      </section>
+
+      <section class="panel">
+        <h3>365-Day Path</h3>
+        <div id="day-selector-grid" class="day-selector-grid"></div>
+      </section>
+    </section>
+
+    <section id="screen-worldmap" class="screen content-screen" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Course map</p>
+          <h2>Kannada Worlds</h2>
+        </div>
+        <button id="btn-worldmap-back" class="btn-secondary" type="button">Home</button>
+      </div>
+      <div id="worldmap-container" class="worldmap-grid"></div>
+    </section>
+
+    <section id="screen-lesson" class="screen lesson-screen" aria-hidden="true">
+      <div class="lesson-top">
+        <button class="btn-back icon-btn" type="button" aria-label="Back">×</button>
+        <div class="lesson-meter"><span id="lesson-progress-bar"></span></div>
+        <div id="lives-bar" class="lives-bar"></div>
+      </div>
+      <div class="lesson-meta">
+        <span id="lesson-day">Day 1</span>
+        <span id="lesson-world">Letter World</span>
+        <span id="lesson-q-count">1 / 1</span>
+        <span id="lesson-lives" class="sr-only"></span>
+      </div>
+      <h2 id="lesson-title">Lesson</h2>
+      <div id="question-container" class="question-container"></div>
+    </section>
+
+    <section id="screen-lesson-complete" class="screen centered-screen" aria-hidden="true">
+      <div class="panel celebration-panel">
+        <p id="lc-perfect-badge" class="perfect-badge">Perfect lesson</p>
+        <div id="lc-stars" class="stars-score"></div>
+        <h2 id="lc-day">Day Complete!</h2>
+        <p id="lc-title"></p>
+        <div class="stat-grid">
+          <article><strong id="lc-xp">0 XP</strong><span>XP</span></article>
+          <article><strong id="lc-gems">0</strong><span>Gems</span></article>
+          <article><strong id="lc-accuracy">100%</strong><span>Accuracy</span></article>
+          <article><strong id="lc-correct">0/0</strong><span>Correct</span></article>
+        </div>
+        <p id="lc-streak" class="streak-line">0 day streak</p>
+        <div id="lc-new-badges" class="new-badges"></div>
+        <button id="lc-next-btn" class="btn-primary btn-xl" type="button">Continue</button>
+      </div>
+    </section>
+
+    <section id="screen-profile" class="screen content-screen" aria-hidden="true">
+      <div class="profile-banner">
+        <p class="eyebrow">Moon learner profile</p>
+        <h2 id="profile-name">Mishi</h2>
+        <p id="profile-day">Day 1 of 365</p>
+        <div class="profile-progress"><span id="profile-progress-fill"></span></div>
+        <p id="profile-progress-pct">0% complete</p>
+      </div>
+      <div class="stat-grid">
+        <article><strong id="profile-streak">0</strong><span>Streak</span></article>
+        <article><strong id="profile-total-xp">0 XP</strong><span>XP</span></article>
+        <article><strong id="profile-gems">0 gems</strong><span>Gems</span></article>
+        <article><strong id="profile-lessons">0 lessons</strong><span>Lessons</span></article>
+        <article><strong id="profile-perfect">0</strong><span>Perfect</span></article>
+        <article><strong id="profile-badges-count">0</strong><span>Badges</span></article>
+      </div>
+      <section class="panel">
+        <h3>Current World</h3>
+        <p id="profile-world"></p>
+        <p id="profile-start-date"></p>
+      </section>
+      <section class="panel">
+        <h3>Badge Preview</h3>
+        <div id="profile-badges-mini" class="mini-badges"></div>
+      </section>
+      <section class="panel">
+        <h3>Streak Gifts</h3>
+        <div id="streak-milestones" class="milestone-grid"></div>
+      </section>
+    </section>
+
+    <section id="screen-shop" class="screen content-screen" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Perks and outfits</p>
+          <h2>Moon Shop</h2>
+        </div>
+        <strong id="shop-gems-balance">0 gems</strong>
+      </div>
+      <div id="shop-items-container" class="shop-grid"></div>
+      <div id="cosmetics-container" class="shop-grid"></div>
+    </section>
+
+    <section id="screen-badges" class="screen content-screen" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Trophy room</p>
+          <h2>Badges</h2>
+        </div>
+        <strong id="badges-count">0 earned</strong>
+      </div>
+      <div id="badges-grid" class="badges-grid"></div>
+    </section>
+
+    <section id="screen-settings" class="screen content-screen" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Guardian controls</p>
+          <h2>Settings</h2>
+        </div>
+        <button class="btn-back btn-secondary" type="button">Back</button>
+      </div>
+      <div class="panel">
+        <label class="toggle-row">
+          <span>Speech and pronunciation</span>
+          <input id="settings-speech-toggle" type="checkbox" checked />
+        </label>
+        <p id="settings-streak-info" class="settings-note"></p>
+        <p id="settings-mascot" class="settings-note"></p>
+        <p id="settings-version" class="settings-note"></p>
+      </div>
+    </section>
+
+    <section id="screen-saveload" class="screen content-screen" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Progress code</p>
+          <h2>Save and Load</h2>
+        </div>
+        <button class="btn-back btn-secondary" type="button">Back</button>
+      </div>
+      <div class="panel">
+        <h3>Your Save Code</h3>
+        <pre id="save-code-display" class="save-code"></pre>
+        <button id="btn-copy-save" class="btn-primary" type="button">Copy Code</button>
+      </div>
+      <div class="panel">
+        <h3>Load Progress</h3>
+        <textarea id="load-code-input" rows="5" placeholder="Paste save code here"></textarea>
+        <button id="btn-load-save" class="btn-secondary" type="button">Load Code</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button id="nav-home" type="button"><span>⌂</span>Home</button>
+    <button id="nav-map" type="button"><span>◇</span>Map</button>
+    <button id="nav-profile" type="button"><span>♛</span>Profile</button>
+    <button id="nav-shop" type="button"><span>✦</span>Shop</button>
+    <button id="nav-badges" type="button"><span>★</span>Badges</button>
+  </nav>
+
+  <div id="lesson-intro-modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="btn-close-modal icon-btn" type="button" aria-label="Close">×</button>
+      <div id="li-world-icon" class="modal-icon"></div>
+      <p id="li-world-name" class="eyebrow"></p>
+      <h2 id="li-lesson-title"></h2>
+      <div class="modal-stats">
+        <span id="li-day"></span>
+        <span id="li-xp"></span>
+        <span id="li-q-count"></span>
+      </div>
+      <button id="li-start-btn" class="btn-primary btn-xl" type="button">Begin Lesson</button>
+    </div>
+  </div>
+
+  <div id="no-lives-modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="btn-close-modal icon-btn" type="button" aria-label="Close">×</button>
+      <h2>Out of hearts</h2>
+      <p id="no-lives-msg"></p>
+      <button id="btn-refill-lives" class="btn-primary" type="button">Refill with Gems</button>
+    </div>
+  </div>
+
+  <div id="badge-detail-modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="btn-close-modal icon-btn" type="button" aria-label="Close">×</button>
+      <div id="badge-detail-icon" class="modal-icon"></div>
+      <h2 id="badge-detail-name"></h2>
+      <p id="badge-detail-desc"></p>
+    </div>
+  </div>
+
+  <div id="streak-celebration-modal" class="modal" aria-hidden="true">
+    <div class="modal-card celebration-modal">
+      <h2 id="streak-celeb-number">0</h2>
+      <p id="streak-celeb-msg"></p>
+    </div>
+  </div>
+
+  <script src="script.js?v=9"></script>
+</body>
+</html>
